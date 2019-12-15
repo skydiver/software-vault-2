@@ -8,7 +8,10 @@
   "scripts": {
     "start": "electron .",
     "build": "next build renderer && next export renderer",
-    "dist": "npm run build && electron-builder --dir"
+    "dist": "npm run build && electron-builder --dir",
+    "lint": "eslint --ext .js,.jsx --ignore-path .gitignore .",
+    "precommit": "npm run lint",
+    "clean": "rm -rf .dist .next"
   },
   "dependencies": {
     "electron-is-dev": "^1.1.0",

@@ -5,6 +5,6 @@ module.exports = {
     // in the production version of your app
     return {
       '/start': { page: '/start' },
-    }
+    };
   },
-}
+};
