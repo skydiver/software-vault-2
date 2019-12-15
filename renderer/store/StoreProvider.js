@@ -10,40 +10,39 @@ const StoreContext = React.createContext();
 class StoreProvider extends Component {
   constructor(props) {
     super(props);
-    // if (this.config !== '') {
-    //   this.config = new ElectronStore();
-    // }
+
+    this.config = null;
+
+    this.defaultForm = {
+      name: '',
+      web: '',
+      store: '',
+      purchasedDate: null,
+      licensedTo: '',
+      licenseKey: '',
+      icon: null,
+    };
+
+    this.state = {
+      records: [],
+      activeRecord: null,
+      form: this.defaultForm,
+      formVisible: false,
+      formUnsaved: false,
+      storeOptions: [
+        'App Store',
+        'App Store IAP',
+        'Publisher',
+        'BundleHunt',
+        'StackSocial',
+      ],
+    };
   }
 
-  defaultForm = {
-    name: '',
-    web: '',
-    store: '',
-    purchasedDate: null,
-    licensedTo: '',
-    licenseKey: '',
-    icon: null,
-  };
-
-  state = {
-    records: [],
-    activeRecord: null,
-    form: this.defaultForm,
-    formVisible: false,
-    formUnsaved: false,
-    storeOptions: [
-      'App Store',
-      'App Store IAP',
-      'Publisher',
-      'BundleHunt',
-      'StackSocial',
-    ],
-  };
-
   componentDidMount = () => {
-    console.log('INIT');
-    // const records = this.getRecords();
-    // this.setState({ records });
+    this.config = window.STORE;
+    const records = this.getRecords();
+    this.setState({ records });
   };
 
   /**

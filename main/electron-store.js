@@ -1,7 +1,6 @@
 const Store = require('electron-store');
-
-// const electron = require('electron');
-// const isDev = require('electron-is-dev');
+const electron = require('electron');
+const isDev = require('electron-is-dev');
 
 class ElectronStore {
   constructor() {
@@ -26,4 +25,4 @@ class ElectronStore {
   }
 }
 
-export default ElectronStore;
+module.exports = ElectronStore;
