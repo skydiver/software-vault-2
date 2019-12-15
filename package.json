@@ -16,9 +16,13 @@
     "clean": "rm -rf .dist .next"
   },
   "dependencies": {
+    "@zeit/next-css": "^1.0.1",
+    "base64-img": "^1.0.4",
     "electron-is-dev": "^1.1.0",
     "electron-next": "^3.1.5",
-    "semantic-ui-react": "^0.88.2"
+    "next-compose-plugins": "^2.2.0",
+    "semantic-ui-react": "^0.88.2",
+    "styled-components": "^4.4.1"
   },
   "devDependencies": {
     "babel-eslint": "^10.0.3",
