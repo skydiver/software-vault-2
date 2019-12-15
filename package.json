@@ -9,13 +9,16 @@
     "start": "electron .",
     "build": "next build renderer && next export renderer",
     "dist": "npm run build && electron-builder --dir",
+    "semantic:build": "cd .semantic && gulp build-css build-assets",
+    "semantic:watch": "cd .semantic && npm run semantic:build && gulp watch",
     "lint": "eslint --ext .js,.jsx --ignore-path .gitignore .",
     "precommit": "npm run lint",
     "clean": "rm -rf .dist .next"
   },
   "dependencies": {
     "electron-is-dev": "^1.1.0",
-    "electron-next": "^3.1.5"
+    "electron-next": "^3.1.5",
+    "semantic-ui-react": "^0.88.2"
   },
   "devDependencies": {
     "babel-eslint": "^10.0.3",
@@ -31,10 +34,14 @@
     "eslint-plugin-prettier": "^3.1.2",
     "eslint-plugin-react": "^7.17.0",
     "eslint-plugin-react-hooks": "^2.3.0",
+    "fomantic-ui": "^2.8.2",
     "next": "latest",
     "prettier": "^1.19.1",
     "react": "^16.12.0",
-    "react-dom": "^16.12.0"
+    "react-dom": "^16.12.0",
+    "react-dropzone": "^10.2.1",
+    "react-semantic-toasts": "^0.6.5",
+    "react-semantic-ui-datepickers": "^2.1.0"
   },
   "build": {
     "asar": false,
