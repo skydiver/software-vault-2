@@ -20,6 +20,8 @@
     "base64-img": "^1.0.4",
     "electron-is-dev": "^1.1.0",
     "electron-next": "^3.1.5",
+    "electron-store": "^5.1.0",
+    "electron-window-state": "^5.0.3",
     "next-compose-plugins": "^2.2.0",
     "semantic-ui-react": "^0.88.2",
     "styled-components": "^4.4.1"
