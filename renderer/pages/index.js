@@ -30,7 +30,7 @@ const GridContainer = styled(Grid)`
     padding: 0;
     background-color: #fff;
     border-right: solid 1px #c9c9c9;
-    overflow: auto;
+    overflow: hidden;
   }
 
   & #main {

@@ -7,7 +7,9 @@ import { StoreConsumer } from '../store/StoreProvider';
 import helpers from '../lib/helpers';
 
 const StyledContainer = styled.div`
+  height: calc(100% - 55px);
   padding: 0 !important;
+  overflow: auto;
 
   & .item {
     line-height: 24px !important;
