@@ -269,7 +269,7 @@ class StoreProvider extends Component {
 }
 
 StoreProvider.propTypes = {
-  children: PropTypes.object.isRequired,
+  children: PropTypes.array.isRequired,
 };
 
 const StoreConsumer = StoreContext.Consumer;
