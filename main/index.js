@@ -4,16 +4,32 @@ const { format } = require('url');
 
 // Packages
 const { BrowserWindow, app, ipcMain } = require('electron');
-const isDev = require('electron-is-dev');
 const prepareNext = require('electron-next');
 
-// Prepare the renderer once the app is ready
-app.on('ready', async () => {
-  await prepareNext('./renderer');
+const windowStateKeeper = require('electron-window-state');
+const isDev = require('electron-is-dev');
 
-  const mainWindow = new BrowserWindow({
-    width: 800,
-    height: 600,
+let mainWindow;
+
+// Prepare the renderer once the app is ready
+const createWindow = async () => {
+  if (mainWindow === undefined) {
+    await prepareNext('./renderer');
+  }
+
+  // Set default window dimensions
+  const mainWindowState = windowStateKeeper({
+    defaultWidth: 800,
+    defaultHeight: 800,
+  });
+
+  // Create main window
+  mainWindow = new BrowserWindow({
+    width: mainWindowState.width,
+    height: mainWindowState.height,
+    x: mainWindowState.x,
+    y: mainWindowState.y,
+    titleBarStyle: 'hidden',
     webPreferences: {
       nodeIntegration: false,
       preload: join(__dirname, 'preload.js'),
@@ -29,7 +45,26 @@ app.on('ready', async () => {
       });
 
   mainWindow.loadURL(url);
+
+  // Remember window state
+  mainWindowState.manage(mainWindow);
+
+  // Emitted when the window is closed.
+  mainWindow.on('closed', () => {
+    mainWindow = null;
+  });
+};
+
+app.on('ready', createWindow);
+
+app.on('window-all-closed', () => {
+  if (process.platform !== 'darwin') {
+    app.quit();
+  }
 });
 
-// Quit the app once all windows are closed
-app.on('window-all-closed', app.quit);
+app.on('activate', function() {
+  if (mainWindow === null) {
+    createWindow();
+  }
+});
