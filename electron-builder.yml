@@ -1,0 +1,18 @@
+#productName: "software-vault-2"
+#appId: "dev.skydiver.software-vault-2"
+
+#electronVersion: "6.0.10"
+
+asar: true
+
+files:
+  - "main"
+  - "build/next"
+
+directories:
+  output: "build/dist"
+
+mac:
+  icon: "renderer/icon.icns"
+  target:
+    - target: "dir"

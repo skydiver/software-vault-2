@@ -9,6 +9,14 @@ const prepareNext = require('electron-next');
 const windowStateKeeper = require('electron-window-state');
 const isDev = require('electron-is-dev');
 
+let _APP_URL_ = 'http://localhost:8000/';
+
+if (!isDev) {
+  const serve = require('electron-serve');
+  serve({ directory: 'build/next' });
+  _APP_URL_ = 'app://-';
+}
+
 let mainWindow;
 
 // Prepare the renderer once the app is ready
@@ -16,6 +24,8 @@ const createWindow = async () => {
   if (mainWindow === undefined) {
     await prepareNext('./renderer');
   }
+
+  await app.whenReady();
 
   // Set default window dimensions
   const mainWindowState = windowStateKeeper({
@@ -36,15 +46,7 @@ const createWindow = async () => {
     },
   });
 
-  const url = isDev
-    ? 'http://localhost:8000/start'
-    : format({
-        pathname: join(__dirname, '../renderer/start.html'),
-        protocol: 'file:',
-        slashes: true,
-      });
-
-  mainWindow.loadURL(url);
+  await mainWindow.loadURL(_APP_URL_);
 
   // Remember window state
   mainWindowState.manage(mainWindow);

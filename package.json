@@ -7,19 +7,20 @@
   "main": "main/index.js",
   "scripts": {
     "start": "electron .",
-    "build": "next build renderer && next export renderer",
-    "dist": "npm run build && electron-builder --dir && npm run clean",
+    "build": "next build renderer && next export renderer -o build/next/",
+    "dist": "npm run build && electron-builder && npm run clean",
     "semantic:build": "cd .semantic && gulp build-css build-assets",
     "semantic:watch": "cd .semantic && npm run semantic:build && gulp watch",
     "lint": "eslint --ext .js,.jsx --ignore-path .gitignore .",
     "precommit": "npm run lint",
-    "clean": "rm -rf renderer/out renderer/.next"
+    "clean": "rm -rf build/next renderer/.next"
   },
   "dependencies": {
     "@zeit/next-css": "^1.0.1",
     "base64-img": "^1.0.4",
     "electron-is-dev": "^1.1.0",
     "electron-next": "^3.1.5",
+    "electron-serve": "^0.4.1",
     "electron-store": "^5.1.0",
     "electron-window-state": "^5.0.3",
     "next-compose-plugins": "^2.2.0",
@@ -48,14 +49,5 @@
     "react-dropzone": "^10.2.1",
     "react-semantic-toasts": "^0.6.5",
     "react-semantic-ui-datepickers": "^2.1.0"
-  },
-  "build": {
-    "asar": false,
-    "extraResources": [
-      {
-        "from": "renderer/out",
-        "to": "app/renderer"
-      }
-    ]
   }
 }
