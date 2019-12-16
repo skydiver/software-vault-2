@@ -58,8 +58,8 @@ class RecordForm extends React.Component {
               />
               <SemanticDatepicker
                 label="Purchased date"
-                selected={purchasedDate}
-                onDateChange={this.props.handleDateChange}
+                value={purchasedDate}
+                onChange={this.props.handleDateChange}
                 format="YYYY-MM-DD"
               />
             </Form.Group>

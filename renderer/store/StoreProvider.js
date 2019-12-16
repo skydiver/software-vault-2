@@ -4,6 +4,7 @@ import uuidv4 from 'uuid/v4';
 
 // import ElectronStore from '../lib/electron-store';
 import toasts from '../lib/toasts';
+import storeOptions from './options-store.json';
 
 const StoreContext = React.createContext();
 
@@ -29,13 +30,7 @@ class StoreProvider extends Component {
       form: this.defaultForm,
       formVisible: false,
       formUnsaved: false,
-      storeOptions: [
-        'App Store',
-        'App Store IAP',
-        'Publisher',
-        'BundleHunt',
-        'StackSocial',
-      ],
+      storeOptions,
     };
   }
 
@@ -213,7 +208,8 @@ class StoreProvider extends Component {
    * @param {object} dateSelected JavaScript event
    * @returns {undefined}
    */
-  handleDateChange = dateSelected => {
+  handleDateChange = (e, datepickerObject) => {
+    const dateSelected = datepickerObject.value;
     if (
       dateSelected === null ||
       this.state.form.purchasedDate === dateSelected.toISOString()
