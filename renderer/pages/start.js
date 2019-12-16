@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { Grid } from 'semantic-ui-react';
+import { SemanticToastContainer } from 'react-semantic-toasts';
 
 import Sidebar from '../components/Sidebar';
 import Main from '../components/Main';
@@ -47,7 +48,7 @@ const App = () => (
       <Sidebar />
       <Main />
       <Bar />
-      {/* <SemanticToastContainer /> */}
+      <SemanticToastContainer />
     </GridContainer>
   </>
 );

@@ -52,7 +52,7 @@ class Bar extends React.Component {
   };
 
   render() {
-    const {form} = this.props;
+    const { form } = this.props;
     const readyToSave = !(form.name !== '');
     return (
       <BottomBar>
