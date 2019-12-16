@@ -48,6 +48,7 @@
     "react-semantic-toasts": "^0.6.5",
     "react-semantic-ui-datepickers": "^2.1.0",
     "semantic-ui-react": "^0.88.2",
-    "styled-components": "^4.4.1"
+    "styled-components": "^4.4.1",
+    "url-loader": "^3.0.0"
   }
 }
