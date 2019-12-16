@@ -8,12 +8,12 @@
   "scripts": {
     "start": "electron .",
     "build": "next build renderer && next export renderer",
-    "dist": "npm run build && electron-builder --dir",
+    "dist": "npm run build && electron-builder --dir && npm run clean",
     "semantic:build": "cd .semantic && gulp build-css build-assets",
     "semantic:watch": "cd .semantic && npm run semantic:build && gulp watch",
     "lint": "eslint --ext .js,.jsx --ignore-path .gitignore .",
     "precommit": "npm run lint",
-    "clean": "rm -rf .dist .next"
+    "clean": "rm -rf renderer/out renderer/.next"
   },
   "dependencies": {
     "@zeit/next-css": "^1.0.1",
