@@ -5,8 +5,6 @@ import Dropzone from 'react-dropzone';
 import { Icon, Image } from 'semantic-ui-react';
 import { StoreConsumer } from '../store/StoreProvider';
 
-const base64Img = require('base64-img');
-
 const StyledDropZone = styled.div`
   text-align: center;
 
